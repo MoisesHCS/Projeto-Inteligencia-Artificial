@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{textcomp}
+\usepackage{url}
 \renewcommand{\IEEEkeywordsname}{Palavras-chave}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \newcommand{\prodname}{\texttt{GLOBAL\_ANALYSISFORECAST\_PHY\_}\allowbreak\texttt{001\_024}}
@@ -248,7 +249,7 @@ Como $v_{agua} \geq v_{navio} - 3{,}6\,|\vec{V}|$ e $|\vec{V}| \leq V_{max}$ nos
 A busca é realizada por uma implementação própria do A* em Python, com fila de prioridade do tipo \textit{min-heap} binária (módulo \texttt{heapq}), com custo $O(\log n)$ por operação de inserção e remoção. A mesma rotina atende aos dois critérios: com o peso de tempo (Eq.~\ref{eq:c}) e a heurística da Eq.~\ref{eq:h}, obtém-se a rota A* de tempo; com o peso de combustível (Eq.~\ref{eq:ccomb}) e a heurística da Eq.~\ref{eq:hcomb}, a rota A* de combustível. A implementação registra o número de nós expandidos, isto é, retirados da fila e fechados; com $h(n) = 0$, a rotina equivale ao algoritmo de Dijkstra, usado como referência de custo computacional em cada critério. O custo da rota obtida é conferido, em todas as execuções, contra o da função \texttt{astar\_path} da biblioteca NetworkX, aplicada ao mesmo grafo e à mesma heurística. O custo total de uma rota é a soma dos pesos de suas arestas.
 
 \subsection{Ferramentas, Linguagem e Bibliotecas}
-O projeto foi desenvolvido na linguagem Python, em ambiente Jupyter Notebook. As bibliotecas utilizadas e suas funções no projeto são: xarray, para a leitura do arquivo NetCDF; pandas, para a conversão em tabela, a exportação e leitura da planilha, o preenchimento sequencial dos índices e a tabulação dos resultados; NumPy, para as operações matriciais, a magnitude, a direção e a distância de Haversine; NetworkX, para a construção do grafo dirigido e a verificação do custo da rota com \texttt{astar\_path}; e Matplotlib, para as visualizações do campo de correntes, do grafo e das rotas. A biblioteca padrão \texttt{math} é usada no cálculo do vetor unitário do rumo, e os módulos \texttt{heapq} e \texttt{time}, na fila de prioridade da busca e na medição do tempo de execução.
+O projeto foi desenvolvido na linguagem Python, em ambiente Jupyter Notebook. As bibliotecas utilizadas e suas funções no projeto são: xarray, para a leitura do arquivo NetCDF; pandas, para a conversão em tabela, a exportação e leitura da planilha, o preenchimento sequencial dos índices e a tabulação dos resultados; NumPy, para as operações matriciais, a magnitude, a direção e a distância de Haversine; NetworkX, para a construção do grafo dirigido e a verificação do custo da rota com \texttt{astar\_path}; e Matplotlib, para as visualizações do campo de correntes, do grafo e das rotas. A biblioteca padrão \texttt{math} é usada no cálculo do vetor unitário do rumo, e os módulos \texttt{heapq} e \texttt{time}, na fila de prioridade da busca e na medição do tempo de execução. O c\'odigo-fonte do projeto est\'a dispon\'ivel no GitHub \cite{github}.
 
 \subsection{Processo de Desenvolvimento e Validação}
 O desenvolvimento foi incremental, seguindo a ordem das etapas descritas na Seção III-B: primeiro, a leitura e a inspeção do arquivo NetCDF; depois, a conversão tabular e o pré-processamento; em seguida, a implementação das funções de distância, custo e heurística e a construção do grafo; e, por fim, a execução do A* e a visualização. A construção do grafo e a execução do A* foram inicialmente verificadas na grade de teste da Fig.~\ref{fig:grafo}, permitindo conferir visualmente que nenhuma aresta atravessa terra e que os movimentos diagonais respeitam a restrição da Eq.~\ref{eq:E}.
@@ -339,6 +340,7 @@ Este trabalho implementou um planejador de rotas marítimas baseado no A*, com d
 \bibitem{pardede} S. L. Pardede et al., ``A Review of Pathfinding in Game Development,'' ResearchGate, 2021.
 \bibitem{stramma} L. Stramma e M. England, ``On the water masses and mean circulation of the South Atlantic Ocean,'' J. Geophysical Research: Oceans, vol. 104, n. C9, pp. 20863--20883, 1999.
 \bibitem{psaraftis} H. N. Psaraftis e C. A. Kontovas, ``Speed models for energy-efficient maritime transportation: A taxonomy and survey,'' Transportation Research Part C: Emerging Technologies, vol. 26, pp. 331--351, 2013.
+\bibitem{github} M. H. C. da Silva, F. A. de Souza e G. V. Krebski, ``Projeto-Inteligencia-Artificial,'' reposit\'orio de c\'odigo no GitHub, 2026. Dispon\'ivel em: \url{https://github.com/MoisesHCS/Projeto-Inteligencia-Artificial}
 \end{thebibliography}
 
 \end{document}
